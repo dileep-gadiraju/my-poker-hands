@@ -60,7 +60,6 @@ class RegRakingServiceTest {
 		 cards.add(new Card(Rank.SIX,Suit.CLUBS));
 		 cards.add(new Card(Rank.SEVEN,Suit.CLUBS));
 		 cards.add(new Card(Rank.EIGHT,Suit.CLUBS));
-		 
 		 assertTrue(rankingService.isStraightFlush(cards),"Straight Flush Positive");
 	}
 
