@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
 
 import com.cards.model.Card;
 import com.cards.model.Rank;
-import com.cards.model.Suit;
 
 public class RegRankingService implements RankingService {
 
@@ -68,4 +67,19 @@ public class RegRankingService implements RankingService {
 		return isStraight;
 	}
 
+	@Override
+	public boolean isFullHouse(List<Card> cards) {
+		boolean isFullHouse = cards.size()>0 && cards.size()<=5 &&
+				IntStream.range(0, 2).allMatch(idx -> cards.get(idx+1).getRank()==cards.get(idx).getRank()) &&
+				cards.get(3).getRank()==cards.get(4).getRank();
+		return isFullHouse;
+	}
+
+	@Override
+	public boolean isThreeOfAKind(List<Card> cards) {
+
+		return false;
+	}
+
+	
 }
