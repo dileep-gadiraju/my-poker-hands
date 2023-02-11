@@ -7,4 +7,7 @@ import com.cards.model.Card;
 public interface RankingService {
 	boolean isRoyalFlush(List<Card> cards);
 	boolean isStraightFlush(List<Card> cards);
+	boolean isFourOfAKind(List<Card> cards);
+	boolean isFlush(List<Card> cards);
+	boolean isStraight(List<Card> cards);
 }

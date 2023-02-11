@@ -26,5 +26,6 @@ public class RubikSide implements Cloneable {
 
 	public void setCol(int col, int[] newValues) {
 		IntStream.range(0, size).forEach(i -> values[i][col] = newValues[i]);
+		
 	}
 }

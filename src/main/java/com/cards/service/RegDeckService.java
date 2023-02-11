@@ -32,9 +32,10 @@ public class RegDeckService implements DeckService {
 
 	public List<Card> distribute(DeckOfCards deck, int numberOfCards) {
 		List<Card> cards = new ArrayList<>();
-		if (numberOfCards > 0 && numberOfCards <= deck.getCards().size()) {
+		if (numberOfCards > 0 && numberOfCards <= deck.getCards().size() && deck.getCards().size() > 0) {
 			cards.addAll(deck.getCards().subList(0, numberOfCards));
 		}
+		deck.getCards().remove(cards);
 		return cards;
 	}
 
