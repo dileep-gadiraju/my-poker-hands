@@ -1,5 +1,6 @@
 package com.cards.service;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -15,18 +16,16 @@ import com.cards.model.Suit;
 
 class RegRakingServiceTest {
 
-	private DeckService service;
 	private RankingService rankingService;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		service = RegDeckService.getInstance();
 		rankingService=RegRankingService.getInstance();
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		service=null;
+		rankingService=null;
 	}
 
 	@Test
@@ -38,7 +37,31 @@ class RegRakingServiceTest {
 		 cards.add(new Card(Rank.KING,Suit.HEART));
 		 cards.add(new Card(Rank.ACE,Suit.HEART));
 		 
-		 assertTrue(rankingService.isRoyalFlush(cards),"Royal Flush Test");
+		 assertTrue(rankingService.isRoyalFlush(cards),"Royal Flush Positive Test");
+	}
+
+	@Test
+	void testRoyalFlushNegative() {
+		 List<Card> cards=new ArrayList<>();
+		 cards.add(new Card(Rank.TEN,Suit.HEART));
+		 cards.add(new Card(Rank.JACK,Suit.HEART));
+		 cards.add(new Card(Rank.QUEEN,Suit.HEART));
+		 cards.add(new Card(Rank.FIVE,Suit.HEART));
+		 cards.add(new Card(Rank.ACE,Suit.HEART));
+		 
+		 assertFalse(rankingService.isRoyalFlush(cards));
+	}
+	
+	@Test
+	void testStraightFlushPositive() {
+		 List<Card> cards=new ArrayList<>();
+		 cards.add(new Card(Rank.FOUR,Suit.CLUBS));
+		 cards.add(new Card(Rank.FIVE,Suit.CLUBS));
+		 cards.add(new Card(Rank.SIX,Suit.CLUBS));
+		 cards.add(new Card(Rank.SEVEN,Suit.CLUBS));
+		 cards.add(new Card(Rank.EIGHT,Suit.CLUBS));
+		 
+		 assertTrue(rankingService.isStraightFlush(cards),"Straight Flush Positive");
 	}
 
 }
