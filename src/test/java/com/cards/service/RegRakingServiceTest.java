@@ -46,8 +46,8 @@ class RegRakingServiceTest {
 		 cards.add(new Card(Rank.TEN,Suit.SPADES));
 		 cards.add(new Card(Rank.JACK,Suit.SPADES));
 		 cards.add(new Card(Rank.QUEEN,Suit.SPADES));
-		 cards.add(new Card(Rank.KING,Suit.SPADES));
 		 cards.add(new Card(Rank.ACE,Suit.SPADES));
+		 cards.add(new Card(Rank.KING,Suit.SPADES));
 		 
 		 assertTrue(rankingService.isRoyalFlush(cards),"Royal Flush Positive Test");
 	}
@@ -89,10 +89,10 @@ class RegRakingServiceTest {
 	}
 	
 	@Test
-	void testStraightFlushPositive() {
+	void testStraightFlush_UnorderedRank_Positive() {
 		 List<Card> cards=new ArrayList<>();
-		 cards.add(new Card(Rank.FOUR,Suit.CLUBS));
 		 cards.add(new Card(Rank.FIVE,Suit.CLUBS));
+		 cards.add(new Card(Rank.FOUR,Suit.CLUBS));
 		 cards.add(new Card(Rank.SIX,Suit.CLUBS));
 		 cards.add(new Card(Rank.SEVEN,Suit.CLUBS));
 		 cards.add(new Card(Rank.EIGHT,Suit.CLUBS));

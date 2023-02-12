@@ -36,7 +36,7 @@ public class RegRankingService implements RankingService {
 
 	@Override
 	public boolean isStraightFlush(List<Card> cards) {
-
+		Collections.sort(cards);
 		boolean isStraightFlush = cards.size() > 0 && cards.size() <= 5 && IntStream.range(0, 4).allMatch(
 				idx -> Math.abs(cards.get(idx + 1).getRank().ordinal() - cards.get(idx).getRank().ordinal()) == 1
 						&& cards.get(idx + 1).getSuit() == cards.get(idx).getSuit());
@@ -46,12 +46,14 @@ public class RegRankingService implements RankingService {
 
 	@Override
 	public boolean isFourOfAKind(List<Card> cards) {
+		Collections.sort(cards);
 		boolean isFourOfKind = cards.size() == 5;
 		return isFourOfKind;
 	}
 
 	@Override
 	public boolean isFlush(List<Card> cards) {
+		Collections.sort(cards);
 		boolean isFlush = cards.size() > 0 && cards.size() <= 5
 				&& IntStream.range(0, 4).allMatch(
 						idx -> cards.get(idx + 1).getRank().ordinal() - cards.get(idx).getRank().ordinal() != 1
@@ -61,6 +63,7 @@ public class RegRankingService implements RankingService {
 
 	@Override
 	public boolean isStraight(List<Card> cards) {
+		Collections.sort(cards);
 		boolean isStraight = cards.size() > 0 && cards.size() <= 5 && IntStream.range(0, 4).allMatch(
 				idx -> Math.abs(cards.get(idx + 1).getRank().ordinal() - cards.get(idx).getRank().ordinal()) == 1
 						&& cards.get(idx + 1).getSuit() != cards.get(idx).getSuit())
@@ -70,6 +73,7 @@ public class RegRankingService implements RankingService {
 
 	@Override
 	public boolean isFullHouse(List<Card> cards) {
+		Collections.sort(cards);
 		boolean isFullHouse = cards.size()>0 && cards.size()<=5 &&
 				IntStream.range(0, 2).allMatch(idx -> cards.get(idx+1).getRank()==cards.get(idx).getRank()) &&
 				cards.get(3).getRank()==cards.get(4).getRank();
