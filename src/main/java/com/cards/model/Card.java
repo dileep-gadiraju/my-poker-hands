@@ -2,7 +2,7 @@ package com.cards.model;
 
 import java.util.Objects;
 
-public class Card {
+public class Card implements Comparable<Card> {
 	private Rank rank;
 	private Suit suit;
 
@@ -39,6 +39,19 @@ public class Card {
 			return false;
 		Card other = (Card) obj;
 		return rank == other.rank && suit == other.suit;
+	}
+
+	@Override
+	public int compareTo(Card o) {
+		int compareValue = 0;
+		if (rank.ordinal() > o.rank.ordinal()) {
+			compareValue = 1;
+		} else if (rank.ordinal() < o.rank.ordinal()) {
+			compareValue=-1;
+		}else {
+			compareValue=suit.compareTo(o.suit);
+		}
+		return compareValue;
 	}
 
 }

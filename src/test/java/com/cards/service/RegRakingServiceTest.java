@@ -29,12 +29,12 @@ class RegRakingServiceTest {
 	}
 
 	@Test
-	void testRoyalFlush_Heart_Positive() {
+	void testRoyalFlush_Unordered_Heart_Positive() {
 		 List<Card> cards=new ArrayList<>();
-		 cards.add(new Card(Rank.TEN,Suit.HEART));
 		 cards.add(new Card(Rank.JACK,Suit.HEART));
 		 cards.add(new Card(Rank.QUEEN,Suit.HEART));
 		 cards.add(new Card(Rank.KING,Suit.HEART));
+		 cards.add(new Card(Rank.TEN,Suit.HEART));
 		 cards.add(new Card(Rank.ACE,Suit.HEART));
 		 
 		 assertTrue(rankingService.isRoyalFlush(cards),"Royal Flush Positive Test");

@@ -1,6 +1,7 @@
 package com.cards.service;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -26,7 +27,7 @@ public class RegRankingService implements RankingService {
 
 	@Override
 	public boolean isRoyalFlush(List<Card> cards) {
-
+		Collections.sort(cards);
 		boolean isRoyalFlush = cards.size() > 0 && cards.size() <= 5
 				&& IntStream.range(0, 4).allMatch(idx -> cards.get(idx).getRank() == royalRanks.get(idx)
 						&& cards.get(idx + 1).getSuit() == cards.get(idx).getSuit());
