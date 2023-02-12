@@ -1,8 +1,11 @@
 package com.cards.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 import com.cards.model.Card;
@@ -29,8 +32,8 @@ public class RegRankingService implements RankingService {
 	public boolean isRoyalFlush(List<Card> cards) {
 		Collections.sort(cards);
 		boolean isRoyalFlush = cards.size() > 0 && cards.size() <= 5
-				&& IntStream.range(0, 4).allMatch(idx -> cards.get(idx).getRank() == royalRanks.get(idx)
-						&& cards.get(idx + 1).getSuit() == cards.get(idx).getSuit());
+				&& IntStream.range(0, 5).allMatch(idx -> cards.get(idx).getRank() == royalRanks.get(idx))
+				&& IntStream.range(0, 4).allMatch(idx-> cards.get(idx + 1).getSuit() == cards.get(idx).getSuit());
 		return isRoyalFlush;
 	}
 
@@ -74,9 +77,9 @@ public class RegRankingService implements RankingService {
 	@Override
 	public boolean isFullHouse(List<Card> cards) {
 		Collections.sort(cards);
-		boolean isFullHouse = cards.size()>0 && cards.size()<=5 &&
-				IntStream.range(0, 2).allMatch(idx -> cards.get(idx+1).getRank()==cards.get(idx).getRank()) &&
-				cards.get(3).getRank()==cards.get(4).getRank();
+		boolean isFullHouse = cards.size() > 0 && cards.size() <= 5
+				&& IntStream.range(0, 2).allMatch(idx -> cards.get(idx + 1).getRank() == cards.get(idx).getRank())
+				&& cards.get(3).getRank() == cards.get(4).getRank();
 		return isFullHouse;
 	}
 
@@ -86,5 +89,27 @@ public class RegRankingService implements RankingService {
 		return false;
 	}
 
-	
+	@Override
+	public boolean isPair(List<Card> cards) {
+		Collections.sort(cards);
+		boolean pairFound = false;
+		Map<Rank, List<Card>> map = new HashMap<>();
+		for (Card c : cards) {
+			if (map.containsKey(c.getRank())) {
+				map.get(c.getRank()).add(c);
+			} else {
+				List<Card> list = new ArrayList<>();
+				list.add(c);
+				map.put(c.getRank(), list);
+			}
+		}
+		for (Rank r : map.keySet()) {
+			if (map.get(r).size() == 2) {
+				pairFound=true;
+				break;
+			}
+		}
+		return cards.size() > 0 && cards.size() <= 5 && pairFound;
+	}
+
 }

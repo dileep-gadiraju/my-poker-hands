@@ -12,4 +12,5 @@ public interface RankingService {
 	boolean isStraight(List<Card> cards);
 	boolean isFullHouse(List<Card> cards);
 	boolean isThreeOfAKind(List<Card> cards);
+	boolean isPair(List<Card> cards);
 }
