@@ -12,6 +12,12 @@ import com.poker.model.Rank;
 import com.poker.service.PokerHandsService;
 
 public class ThreeOfKindService implements PokerHandsService {
+	
+	private ThreeOfKindService() {}
+	public static ThreeOfKindService INSTANCE;
+	static {
+		INSTANCE=new ThreeOfKindService();
+	}
 
 	@Override
 	public PokerHand solve(List<Card> cards) {

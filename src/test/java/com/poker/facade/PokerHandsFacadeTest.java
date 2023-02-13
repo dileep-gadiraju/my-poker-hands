@@ -24,7 +24,7 @@ class PokerHandsFacadeTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-	
+
 	@Test
 	void testRoyalFlush() {
 		List<Card> cards = new ArrayList<>();
@@ -47,7 +47,6 @@ class PokerHandsFacadeTest {
 		assertEquals(PokerHandsFacade.INSTANCE.solve(cards), PokerHand.STRAIGHT_FLUSH);
 	}
 
-
 	@Test
 	void testFourOfKindFlush() {
 		List<Card> cards = new ArrayList<>();
@@ -56,10 +55,9 @@ class PokerHandsFacadeTest {
 		cards.add(new Card(Rank.EIGHT, Suit.SPADES));
 		cards.add(new Card(Rank.FIVE, Suit.HEARTS));
 		cards.add(new Card(Rank.FIVE, Suit.CLUBS));
-		assertEquals(PokerHand.FOUR_OF_A_KIND,PokerHandsFacade.INSTANCE.solve(cards));
+		assertEquals(PokerHand.FOUR_OF_A_KIND, PokerHandsFacade.INSTANCE.solve(cards));
 	}
 
-	
 	@Test
 	void testFullHouse() {
 		List<Card> cards = new ArrayList<>();
@@ -70,8 +68,7 @@ class PokerHandsFacadeTest {
 		cards.add(new Card(Rank.JACK, Suit.CLUBS));
 		assertEquals(PokerHandsFacade.INSTANCE.solve(cards), PokerHand.FULL_HOUSE);
 	}
-	
-	
+
 	@Test
 	void testFlush() {
 		List<Card> cards = new ArrayList<>();
@@ -80,8 +77,9 @@ class PokerHandsFacadeTest {
 		cards.add(new Card(Rank.EIGHT, Suit.HEARTS));
 		cards.add(new Card(Rank.FIVE, Suit.HEARTS));
 		cards.add(new Card(Rank.ACE, Suit.HEARTS));
-		assertEquals(PokerHand.FLUSH,PokerHandsFacade.INSTANCE.solve(cards));
+		assertEquals(PokerHand.FLUSH, PokerHandsFacade.INSTANCE.solve(cards));
 	}
+
 	@Test
 	void testStraight() {
 		List<Card> cards = new ArrayList<>();
@@ -90,12 +88,20 @@ class PokerHandsFacadeTest {
 		cards.add(new Card(Rank.FIVE, Suit.HEARTS));
 		cards.add(new Card(Rank.FOUR, Suit.HEARTS));
 		cards.add(new Card(Rank.THREE, Suit.HEARTS));
-		assertEquals(PokerHand.STRAIGHT,PokerHandsFacade.INSTANCE.solve(cards));		
+		assertEquals(PokerHand.STRAIGHT, PokerHandsFacade.INSTANCE.solve(cards));
 	}
+
 	@Test
 	void testThreeOfKind() {
-		
-	}	
+		List<Card> cards = new ArrayList<>();
+		cards.add(new Card(Rank.SIX, Suit.HEARTS));
+		cards.add(new Card(Rank.QUEEN, Suit.SPADES));
+		cards.add(new Card(Rank.KING, Suit.HEARTS));
+		cards.add(new Card(Rank.SIX, Suit.DAIMONDS));
+		cards.add(new Card(Rank.SIX, Suit.CLUBS));
+		assertEquals(PokerHand.THREE_OF_KIND, PokerHandsFacade.INSTANCE.solve(cards));
+	}
+
 	@Test
 	void testTwoPair() {
 		List<Card> cards = new ArrayList<>();
@@ -104,9 +110,9 @@ class PokerHandsFacadeTest {
 		cards.add(new Card(Rank.KING, Suit.HEARTS));
 		cards.add(new Card(Rank.QUEEN, Suit.DAIMONDS));
 		cards.add(new Card(Rank.JACK, Suit.CLUBS));
-		assertEquals(PokerHand.TWO_PAIR,PokerHandsFacade.INSTANCE.solve(cards));
+		assertEquals(PokerHand.TWO_PAIR, PokerHandsFacade.INSTANCE.solve(cards));
 	}
-	
+
 	@Test
 	void testPair() {
 		List<Card> cards = new ArrayList<>();
@@ -115,13 +121,18 @@ class PokerHandsFacadeTest {
 		cards.add(new Card(Rank.KING, Suit.HEARTS));
 		cards.add(new Card(Rank.QUEEN, Suit.DAIMONDS));
 		cards.add(new Card(Rank.JACK, Suit.CLUBS));
-		assertEquals(PokerHandsFacade.INSTANCE.solve(cards), PokerHand.PAIR);
+		assertEquals(PokerHand.PAIR, PokerHandsFacade.INSTANCE.solve(cards));
 	}
+
 	@Test
 	void testHardCard() {
-		
+		List<Card> cards = new ArrayList<>();
+		cards.add(new Card(Rank.THREE, Suit.SPADES));
+		cards.add(new Card(Rank.FIVE, Suit.HEARTS));
+		cards.add(new Card(Rank.SEVEN, Suit.DAIMONDS));
+		cards.add(new Card(Rank.NINE, Suit.CLUBS));
+		cards.add(new Card(Rank.JACK, Suit.SPADES));
+		assertEquals(PokerHand.HIGH_CARD, PokerHandsFacade.INSTANCE.solve(cards));
 	}
 
-
-	
 }

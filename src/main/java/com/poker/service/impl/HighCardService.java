@@ -18,8 +18,7 @@ public class HighCardService implements PokerHandsService {
 
 	@Override
 	public PokerHand solve(List<Card> cards) {
-		// TODO Auto-generated method stub
-		return null;
+		return PokerHand.HIGH_CARD;
 	}
 
 }
