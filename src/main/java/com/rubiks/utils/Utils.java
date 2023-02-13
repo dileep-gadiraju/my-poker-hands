@@ -1,4 +1,4 @@
-package com.rubik.utils;
+package com.rubiks.utils;
 
 import java.util.stream.IntStream;
 

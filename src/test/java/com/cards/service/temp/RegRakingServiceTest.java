@@ -1,4 +1,4 @@
-package com.cards.service;
+package com.cards.service.temp;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import com.cards.model.Card;
 import com.cards.model.Rank;
 import com.cards.model.Suit;
+import com.cards.service.temp.RankingService;
+import com.cards.service.temp.RegRankingService;
 
 class RegRakingServiceTest {
 
@@ -31,11 +33,11 @@ class RegRakingServiceTest {
 	@Test
 	void testRoyalFlush_Unordered_Heart_Positive() {
 		List<Card> cards = new ArrayList<>();
-		cards.add(new Card(Rank.JACK, Suit.HEART));
-		cards.add(new Card(Rank.QUEEN, Suit.HEART));
-		cards.add(new Card(Rank.KING, Suit.HEART));
-		cards.add(new Card(Rank.TEN, Suit.HEART));
-		cards.add(new Card(Rank.ACE, Suit.HEART));
+		cards.add(new Card(Rank.JACK, Suit.HEARTS));
+		cards.add(new Card(Rank.QUEEN, Suit.HEARTS));
+		cards.add(new Card(Rank.KING, Suit.HEARTS));
+		cards.add(new Card(Rank.TEN, Suit.HEARTS));
+		cards.add(new Card(Rank.ACE, Suit.HEARTS));
 
 		assertTrue(rankingService.isRoyalFlush(cards), "Royal Flush Positive Test");
 	}
@@ -56,7 +58,7 @@ class RegRakingServiceTest {
 	void testRoyalFlush_MultiSuit__Negative() {
 		List<Card> cards = new ArrayList<>();
 		cards.add(new Card(Rank.TEN, Suit.SPADES));
-		cards.add(new Card(Rank.JACK, Suit.HEART));
+		cards.add(new Card(Rank.JACK, Suit.HEARTS));
 		cards.add(new Card(Rank.QUEEN, Suit.CLUBS));
 		cards.add(new Card(Rank.KING, Suit.DAIMONDS));
 		cards.add(new Card(Rank.ACE, Suit.DAIMONDS));
@@ -79,11 +81,11 @@ class RegRakingServiceTest {
 	@Test
 	void testRoyalFlushNegative() {
 		List<Card> cards = new ArrayList<>();
-		cards.add(new Card(Rank.ACE, Suit.HEART));
-		cards.add(new Card(Rank.TWO, Suit.HEART));
-		cards.add(new Card(Rank.THREE, Suit.HEART));
-		cards.add(new Card(Rank.FOUR, Suit.HEART));
-		cards.add(new Card(Rank.FIVE, Suit.HEART));
+		cards.add(new Card(Rank.ACE, Suit.HEARTS));
+		cards.add(new Card(Rank.TWO, Suit.HEARTS));
+		cards.add(new Card(Rank.THREE, Suit.HEARTS));
+		cards.add(new Card(Rank.FOUR, Suit.HEARTS));
+		cards.add(new Card(Rank.FIVE, Suit.HEARTS));
 
 		assertFalse(rankingService.isRoyalFlush(cards));
 	}

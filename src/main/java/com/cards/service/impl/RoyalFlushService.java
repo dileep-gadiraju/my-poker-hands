@@ -1,4 +1,4 @@
-package com.cards.service;
+package com.cards.service.impl;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,11 +8,15 @@ import java.util.stream.IntStream;
 import com.cards.model.Card;
 import com.cards.model.PokerHand;
 import com.cards.model.Rank;
+import com.cards.service.PokerHandsService;
 
-public class RoyalFlushService implements PokerHandService {
+public class RoyalFlushService implements PokerHandsService {
 	private static List<Rank> royalRanks = Arrays
 			.asList(new Rank[] { Rank.TEN, Rank.JACK, Rank.QUEEN, Rank.KING, Rank.ACE });
-	public static final RoyalFlushService INSTANCE=new RoyalFlushService();
+	public static final RoyalFlushService INSTANCE;
+	static {
+		INSTANCE=new RoyalFlushService();
+	}
 	private RoyalFlushService() {
 		
 	}

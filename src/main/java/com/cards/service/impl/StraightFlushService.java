@@ -1,4 +1,4 @@
-package com.cards.service;
+package com.cards.service.impl;
 
 import java.util.Collections;
 import java.util.List;
@@ -6,10 +6,18 @@ import java.util.stream.IntStream;
 
 import com.cards.model.Card;
 import com.cards.model.PokerHand;
+import com.cards.service.PokerHandsService;
 
-public class StraightFlushService implements PokerHandService {
+public class StraightFlushService implements PokerHandsService {
 
-	public static final StraightFlushService INSTANCE=new StraightFlushService();
+	private StraightFlushService() {
+	}
+
+	public static final StraightFlushService INSTANCE;
+	static {
+		INSTANCE = new StraightFlushService();
+	}
+
 	@Override
 	public PokerHand solve(List<Card> cards) {
 		Collections.sort(cards);

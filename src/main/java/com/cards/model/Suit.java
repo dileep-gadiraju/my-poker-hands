@@ -1,5 +1,5 @@
 package com.cards.model;
 
 public enum Suit {
-	CLUBS, DAIMONDS, HEART, SPADES;
+	CLUBS, DAIMONDS, HEARTS, SPADES;
 }

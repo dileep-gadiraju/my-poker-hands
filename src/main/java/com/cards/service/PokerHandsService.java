@@ -5,6 +5,6 @@ import java.util.List;
 import com.cards.model.Card;
 import com.cards.model.PokerHand;
 
-public interface PokerHandService {
+public interface PokerHandsService {
 	PokerHand solve(List<Card> cards);
 }
