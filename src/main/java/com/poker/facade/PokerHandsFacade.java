@@ -18,7 +18,7 @@ import com.poker.service.impl.TwoPairsService;
 
 public class PokerHandsFacade {
 	public static PokerHandsFacade INSTANCE = new PokerHandsFacade();
-	private PokerHandsService[] services = { RoyalFlushService.INSTANCE, StraightFlushService.INSTANCE,
+	private static final PokerHandsService[] POKER_HANDS_CHAIN = { RoyalFlushService.INSTANCE, StraightFlushService.INSTANCE,
 			FourOfKindService.INSTANCE, FullHouseService.INSTANCE, FlushService.INSTANCE, StraightService.INSTANCE,
 			ThreeOfKindService.INSTANCE, TwoPairsService.INSTANCE, PairService.INSTANCE, HighCardService.INSTANCE };
 
@@ -28,7 +28,7 @@ public class PokerHandsFacade {
 
 	public PokerHand solve(List<Card> cards) {
 		PokerHand hand = null;
-		for (PokerHandsService service : services) {
+		for (PokerHandsService service : POKER_HANDS_CHAIN) {
 			hand = service.solve(cards);
 			if (hand != null) {
 				break;

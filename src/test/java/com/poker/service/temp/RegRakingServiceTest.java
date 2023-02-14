@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -122,5 +123,5 @@ class RegRakingServiceTest {
 		cards.add(new Card(Rank.TWO, Suit.SPADES));
 		assertTrue(rankingService.isPair(cards));		
 	}
-
+	
 }

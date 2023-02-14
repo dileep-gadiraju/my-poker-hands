@@ -16,18 +16,21 @@ import com.poker.model.Rank;
 import com.poker.model.Suit;
 
 class PokerHandsFacadeTest {
-
+	private List<Card> cards;
+	
 	@BeforeEach
 	void setUp() throws Exception {
+		cards=new ArrayList<>();
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		cards=null;
 	}
 
 	@Test
 	void testRoyalFlush() {
-		List<Card> cards = new ArrayList<>();
+		
 		cards.add(new Card(Rank.JACK, Suit.HEARTS));
 		cards.add(new Card(Rank.QUEEN, Suit.HEARTS));
 		cards.add(new Card(Rank.KING, Suit.HEARTS));
