@@ -37,7 +37,10 @@ public class TwoPairsService implements PokerHandsService {
 			}
 		}
 		for (Rank r : map.keySet()) {
-			if (pairFoundCount < 2 && map.get(r).size() == 2) {
+			if (pairFoundCount >= 2) {
+				break;
+			}
+			if (map.get(r).size() == 2) {
 				pairFoundCount++;
 			}
 		}

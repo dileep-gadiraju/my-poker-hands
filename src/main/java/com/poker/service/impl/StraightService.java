@@ -25,8 +25,8 @@ public class StraightService implements PokerHandsService {
 		boolean isStraight = cards.size() > 0 && cards.size() <= 5 && IntStream.range(0, 4).allMatch(
 				idx -> Math.abs(cards.get(idx + 1).getRank().ordinal() - cards.get(idx).getRank().ordinal()) == 1)
 				&& (cards.get(0).getSuit() != cards.get(4).getSuit() || IntStream.range(0, 4)
-						.anyMatch(idx -> cards.get(idx + 1).getSuit() != cards.get(idx).getSuit()))
-				&& cards.get(0).getSuit() != cards.get(4).getSuit();
+						.anyMatch(idx -> cards.get(idx + 1).getSuit() != cards.get(idx).getSuit()));
+
 		if (isStraight) {
 			hand = PokerHand.STRAIGHT;
 		}
